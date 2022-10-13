@@ -1,0 +1,685 @@
+{
+  "children": [
+    {
+      "title": "Construction patrimoine",
+      "children": [
+        {
+          "title": "Documentation du patrimoine bâti",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/patri_documentation_pat_bati",
+            "name": "patri_documentation_pat_bati",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Documentation du patrimoine bâti",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/patri_documentation_pat_bati.qlr",
+            "name": "patri_documentation_pat_bati",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        },
+        {
+          "title": "Les locaux dans les écoles",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/patri_locaux_ecoles",
+            "name": "patri_locaux_ecoles",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Les locaux dans les écoles",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/patri_locaux_ecoles.qlr",
+            "name": "patri_locaux_ecoles",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        },
+        {
+          "title": "Panneaux d'information totem",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/patri_totem",
+            "name": "patri_totem",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Panneaux d'information totem",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/patri_totem.qlr",
+            "name": "patri_totem",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        }
+      ],
+      "description": "",
+      "type": "folder"
+    },
+    {
+      "title": "Foncier",
+      "children": [
+        {
+          "title": "Plan cadastral EMS",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/fonci_plan_cadastral_ems",
+            "name": "fonci_plan_cadastral_ems",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Plan cadastral EMS",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/fonci_plan_cadastral_ems.qlr",
+            "name": "fonci_plan_cadastral_ems",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        },
+        {
+          "title": "Propriétaire institutionnel",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/fonci_proprietaire_institutionnel",
+            "name": "fonci_proprietaire_institutionnel",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Propriétaire institutionnel",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/fonci_proprietaire_institutionnel.qlr",
+            "name": "fonci_proprietaire_institutionnel",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        },
+        {
+          "title": "Cadastre",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/CONSULT_plan_cadastral_EMS_vues",
+            "name": "CONSULT_plan_cadastral_EMS_vues",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Cadastre",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/CONSULT_plan_cadastral_EMS_vues.qlr",
+            "name": "CONSULT_plan_cadastral_EMS_vues",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        }
+      ],
+      "description": "",
+      "type": "folder"
+    },
+    {
+      "title": "Fonds historiques",
+      "children": [
+        {
+          "title": "Plan cadastral allemand",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/histo_cadastre_allemand",
+            "name": "histo_cadastre_allemand",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Plan cadastral allemand",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/histo_cadastre_allemand.qlr",
+            "name": "histo_cadastre_allemand",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        }
+      ],
+      "description": "",
+      "type": "folder"
+    },
+    {
+      "title": "Limites administratives",
+      "children": [
+        {
+          "title": "Limites des découpages électoraux",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/limit_election",
+            "name": "limit_election",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Limites des découpages électoraux",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/limit_election.qlr",
+            "name": "limit_election",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        }
+      ],
+      "description": "",
+      "type": "folder"
+    },
+    {
+      "title": "Nature et paysages",
+      "children": [
+        {
+          "title": "Plan de prévention des risques",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/natur_ppri",
+            "name": "natur_ppri",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Plan de prévention des risques",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/natur_ppri.qlr",
+            "name": "natur_ppri",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        },
+        {
+          "title": "Trames verte et bleue",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/natur_trames_verte_bleue",
+            "name": "natur_trames_verte_bleue",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Trames verte et bleue",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/natur_trames_verte_bleue.qlr",
+            "name": "natur_trames_verte_bleue",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        },
+        {
+          "title": "Zones humides",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/natur_zones_humides",
+            "name": "natur_zones_humides",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Zones humides",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/natur_zones_humides.qlr",
+            "name": "natur_zones_humides",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        }
+      ],
+      "description": "",
+      "type": "folder"
+    },
+    {
+      "title": "Occupation du domaine public",
+      "children": [
+        {
+          "title": "Terrasses",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/occup_terrasses",
+            "name": "occup_terrasses",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Terrasses",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/occup_terrasses.qlr",
+            "name": "occup_terrasses",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        }
+      ],
+      "description": "",
+      "type": "folder"
+    },
+    {
+      "title": "Propreté",
+      "children": [
+        {
+          "title": "Points d'apport volontaire",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/propr_apport_volontaire",
+            "name": "propr_apport_volontaire",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Points d'apport volontaire",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/propr_apport_volontaire.qlr",
+            "name": "propr_apport_volontaire",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        }
+      ],
+      "description": "",
+      "type": "folder"
+    },
+    {
+      "title": "Référentiel",
+      "children": [
+        {
+          "title": "Fond de carte gris",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/refer_fond_gris",
+            "name": "refer_fond_gris",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Fond de carte gris",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/refer_fond_gris.qlr",
+            "name": "refer_fond_gris",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        },
+        {
+          "title": "Fond de carte couleur",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/refer_fond_couleur",
+            "name": "refer_fond_couleur",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Fond de carte couleur",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/refer_fond_couleur.qlr",
+            "name": "refer_fond_couleur",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        },
+        {
+          "title": "Raster d'élévation 2021 (ombrage)",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/WEB_raster_elevation_2021",
+            "name": "WEB_raster_elevation_2021",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Raster d'élévation 2021 (ombrage)",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/WEB_raster_elevation_2021.qlr",
+            "name": "WEB_raster_elevation_2021",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        },
+        {
+          "title": "Ortho photomaillage 2018",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/refer_ortho2018",
+            "name": "refer_ortho2018",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Ortho photomaillage 2018",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/refer_ortho2018.qlr",
+            "name": "refer_ortho2018",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        },
+        {
+          "title": "Ortho-photographie 2020",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/refer_ortho2020",
+            "name": "refer_ortho2020",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Ortho-photographie 2020",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/refer_ortho2020.qlr",
+            "name": "refer_ortho2020",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        },
+        {
+          "title": "Images 360 années 2020-2021",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/refer_image360_2020_21",
+            "name": "refer_image360_2020_21",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Images 360 années 2020-2021",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/refer_image360_2020_21.qlr",
+            "name": "refer_image360_2020_21",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        }
+      ],
+      "description": "",
+      "type": "folder"
+    },
+    {
+      "title": "Sécurité prévention",
+      "children": [
+        {
+          "title": "Cavités souterraines",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/secur_cavites",
+            "name": "secur_cavites",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Cavités souterraines",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/secur_cavites.qlr",
+            "name": "secur_cavites",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        }
+      ],
+      "description": "",
+      "type": "folder"
+    },
+    {
+      "title": "Sport loisir culture",
+      "children": [
+        {
+          "title": "Vitaboucle et aires d'agrès",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/loisi_vitaboucle",
+            "name": "loisi_vitaboucle",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Vitaboucle et aires d'agrès",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/loisi_vitaboucle.qlr",
+            "name": "loisi_vitaboucle",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        },
+        {
+          "title": "Médiathèques",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/loisi_mediatheques",
+            "name": "loisi_mediatheques",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Médiathèques",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/loisi_mediatheques.qlr",
+            "name": "loisi_mediatheques",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        }
+      ],
+      "description": "",
+      "type": "folder"
+    },
+    {
+      "title": "Voirie publique",
+      "children": [
+        {
+          "title": "Consultation : Voirie",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/WEB_CONSULT_voirie",
+            "name": "WEB_CONSULT_voirie",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Consultation : Voirie",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/WEB_CONSULT_voirie.qlr",
+            "name": "WEB_CONSULT_voirie",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        },
+        {
+          "title": "Point de repère routier",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/voiri_point_repere",
+            "name": "voiri_point_repere",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Point de repère routier",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/voiri_point_repere.qlr",
+            "name": "voiri_point_repere",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        }
+      ],
+      "description": "",
+      "type": "folder"
+    },
+    {
+      "title": "Test",
+      "children": [
+        {
+          "title": "test tableau",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/test_tableau",
+            "name": "test_tableau",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches test tableau",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/test_tableau.qlr",
+            "name": "test_tableau",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        },
+        {
+          "title": "Signalement",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/alert_signalement_geo",
+            "name": "alert_signalement_geo",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches Signalement",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/alert_signalement_geo.qlr",
+            "name": "alert_signalement_geo",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        },
+        {
+          "title": "SIgnalement2",
+          "type": "wms_layer",
+          "params": {
+            "url": "https://viewer.wisiglw.cus.fr/qgis/alert_signalement_geo2",
+            "name": "alert_signalement_geo2",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "acces wms au theme"
+        },
+        {
+          "title": "Couches SIgnalement2",
+          "type": "qgis_qlr_file",
+          "params": {
+            "url": "https://wisiglw.cus.fr/donnees/qgis/qlr/alert_signalement_geo2.qlr",
+            "name": "alert_signalement_geo2",
+            "format": "image/png",
+            "srs": "EPSG:3948"
+          },
+          "description": "chargement du theme en acces direct a la base de donnees"
+        }
+      ],
+      "description": "",
+      "type": "folder"
+    }
+  ],
+  "title": "ems - version 2022/09/06 00:00:00",
+  "description": "",
+  "type": "folder"
+}
