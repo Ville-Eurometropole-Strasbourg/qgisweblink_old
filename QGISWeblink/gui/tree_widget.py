@@ -229,8 +229,9 @@ class TreeWidget(QTreeWidget):
                 # iterate through all layers, show layer if text in layer
                 self.iterate_and_show(layer, 'layer', [])
                     
-            # unfold all folders
-            self.expandAll()
+        # unfold all folders
+        print (tree_state_text)
+        self.expandAll()
             
         # combine tree state text with tree state extent
         self.combine_states()

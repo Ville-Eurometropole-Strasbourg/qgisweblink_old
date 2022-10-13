@@ -140,6 +140,55 @@ class WmsLayerTreeNode(FavoritesTreeNode):
             qgis_layer_details["title"],
             qgis_layer_details["provider"])
 
+class WmsLayersTreeNode(FavoritesTreeNode):
+    """
+    Tree node for a group of WMS layer
+    """
+
+    def __init__(self, title, node_type=PluginGlobals.instance().NODE_TYPE_WMS_LAYER,
+                 description=None, status=None, metadata_url=None, ident=None, params=None, bounding_boxes=None, parent_node=None):
+        """
+        """
+        FavoritesTreeNode.__init__(self, title, node_type, description, status, metadata_url, ident, params, bounding_boxes, parent_node)
+
+        self.service_url = params.get("url")
+        self.layer_name = params.get("name")
+        self.layer_format = params.get("format")
+        self.layer_srs = params.get("srs")
+        self.layer_style_name = params.get("style", "")
+        self.can_be_added_to_map = True
+
+        # Icon
+        plugin_icons = PluginIcons.instance()
+        self.icon = plugin_icons.wms_layers_icon
+        if self.status == PluginGlobals.instance().NODE_STATUS_WARN:
+            self.icon = plugin_icons.warn_icon
+
+    def get_qgis_layer_details(self):
+        """
+        Return the details of the layer used by QGIS to add the layer to the map.
+        This dictionary is used by the run_add_to_map_action and layerMimeData methods.
+        """
+        qgis_layer_uri_details = [{
+            "type": "raster",
+            "provider": "wms",
+            "title": name,
+            "uri": u"crs={}&featureCount=10&format={}&layers={}&maxHeight=256&maxWidth=256&styles={}&url={}".format(
+                self.layer_srs, self.layer_format, name, self.layer_style_name, self.service_url)
+        } for name in self.layername]
+
+        return qgis_layer_uri_details
+
+    def run_add_to_map_action(self):
+        """
+        Add the WMS layers in the group with the specified style to the map
+        """
+        qgis_layer_details = self.get_qgis_layer_details()
+        for layer in qgis_layer_details:
+            PluginGlobals.instance().iface.addRasterLayer(
+                layer["uri"],
+                layer["title"],
+                layer["provider"])
 
 class WmsStyleLayerTreeNode(FavoritesTreeNode):
     """
