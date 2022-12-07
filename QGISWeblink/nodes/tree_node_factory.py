@@ -109,6 +109,9 @@ class TreeNodeFactory:
                 node = GdalWmsConfigFileTreeNode(node_title, node_type, node_description,
                                                  node_status, node_metadata_url, node_ident, node_params, node_bounding_boxes, parent_node)
 
+            elif node_type == PluginGlobals.instance().NODE_TYPE_NODE_TYPE_MULTIFORM:
+                node = MultiFormLayerTreeNode(node_title, node_type, node_description,
+                                                 node_status, node_metadata_url, node_ident, node_params, node_bounding_boxes, parent_node)
             else:
                 node = FolderTreeNode(node_title, node_type, node_description,
                                       node_status, node_metadata_url, node_ident, node_params, node_bounding_boxes, parent_node)

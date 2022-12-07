@@ -29,6 +29,7 @@ class PluginGlobals:
     NODE_TYPE_WFS_FEATURE_TYPE_FILTER = "wfs_feature_type_filter"
     NODE_TYPE_GDAL_WMS_CONFIG_FILE = "gdal_wms_config_file"
     NODE_TYPE_QGIS_QLR_FILE = "qgis_qlr_file"
+    NODE_TYPE_MULTIFORM = "multiform"
 
     # Node status values
     NODE_STATUS_WARN = 'warn'
@@ -48,7 +49,7 @@ class PluginGlobals:
     CONFIG_FILES_DOWNLOAD_AT_STARTUP = True
     CONFIG_DIR_NAME = "config"
     CONFIG_FILE_NAMES = ["config.json"]
-    CONFIG_FILE_URLS = ["https://wisiglw.cus.fr/donnees/qgis/plugin_ems/config.json"]
+    CONFIG_FILE_URLS = ["https://catalog.wpsiglw.cus.fr/donnees/qgis/plugin_ems/config.json"]
 
     # Hide resources with status = warn
     HIDE_RESOURCES_WITH_WARN_STATUS = True

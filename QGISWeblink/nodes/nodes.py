@@ -552,3 +552,91 @@ class QlrLayerTreeNode(FavoritesTreeNode):
                 current_node = project.layerTreeRoot()
             iface.messageBar().pushWarning(None, "Layers found:" + layerfile)
             QgsLayerDefinition().loadLayerDefinition(layerfile, project, current_node)
+
+
+
+class MultiFormLayerTreeNode(FavoritesTreeNode):
+    """
+    Tree node for a multiform definition: allows multiple forms of the same data in one node
+    """
+
+    def __init__(self, title, node_type=PluginGlobals.instance().NODE_TYPE_MULTIFORM,
+                 description=None, status=None, metadata_url=None, ident=None, params=None, bounding_boxes=None, parent_node=None):
+        """
+        """
+        FavoritesTreeNode.__init__(self, title, node_type, description, status, metadata_url, ident, params, bounding_boxes, parent_node)
+
+        self.service_url = params.get("url")
+        self.layer_name = params.get("name")
+        self.layer_format = params.get("format")
+        self.layer_srs = params.get("srs")
+        self.layer_style_name = params.get("style", "")
+        self.can_be_added_to_map = True
+
+        # Icon
+        plugin_icons = PluginIcons.instance()
+        self.icon = plugin_icons.qlr_layer_icon
+        if self.status == PluginGlobals.instance().NODE_STATUS_WARN:
+            self.icon = plugin_icons.warn_icon
+
+    def get_qgis_layer_details(self):
+        """
+        Return the details of the layer used by QGIS to add the layer to the map.
+        This dictionary is used by the run_add_to_map_action and layerMimeData methods.
+        """
+        qgis_layer_uri_details = {
+            "type": "vector",
+            "provider": "qlr",
+            "title": self.title,
+            "uri": self.service_url
+        }
+
+        return qgis_layer_uri_details
+
+    def download_layer_file(self,qlrdef):
+        """recupere le fichier qlr"""
+        retour = requests.get(qlrdef,verify=False)
+        if retour.status_code == 200:
+            # tmpdir = tempfile.TemporaryDirectory()
+            tdn=TMPDIR.name
+            fichier=os.path.join(tdn,"layerlist.qlr")
+            with open(fichier, "wb") as fich:
+                fich.write(retour.content)
+            layerfile=fichier
+            return layerfile
+        raise FileNotFoundError(qlrdef)
+
+
+
+    def run_add_to_map_action(self):
+        """
+        Add the WMS layer with the specified style to the map
+        """
+        qgis_layer_details = self.get_qgis_layer_details()
+        # PluginGlobals.instance().iface.addRasterLayer(
+        #     qgis_layer_details["uri"],
+        #     qgis_layer_details["title"],
+        #     qgis_layer_details["provider"])
+
+        qlrfile = qgis_layer_details["uri"]
+        layerfile=qlrfile
+        if qlrfile.startswith("http"):  # download first
+                layerfile = self.download_layer_file(qlrfile)
+                # retour = requests.get(
+                #     gis_file, verify=not self.disable_ssl_verification
+                # )
+                # if retour.status_code == 200:
+                #     # tmpdir = tempfile.TemporaryDirectory()
+                #     tdn = TMPDIR.name
+                #     fichier = os.path.join(tdn, "layerlist.qlr")
+                #     with open(fichier, "wb") as fich:
+                #         fich.write(retour.content)
+                #     layerfile = fichier
+        if layerfile:
+            iface = PluginGlobals.instance().iface
+            project = QgsProject.instance()
+            current_node = iface.layerTreeView().currentNode()
+            if not current_node or isinstance(current_node, QgsLayerTreeLayer):
+                current_node = project.layerTreeRoot()
+            iface.messageBar().pushWarning(None, "Layers found:" + layerfile)
+            QgsLayerDefinition().loadLayerDefinition(layerfile, project, current_node)
