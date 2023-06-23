@@ -23,7 +23,7 @@ class AboutBox(QDialog):
         mainLayout.addWidget(self.logo)
 
 
-        title = u"À propos de l'extension QGISWeblink"
+        title = u"À propos de l'extension {0}".format(PluginGlobals.instance().PLUGIN_TAG)
         description1 = """Extension pour QGIS donnant un accès simplifié aux ressources géographiques de <a href="https://viewer.wpsiglw.cus.fr/">qgis web</a> Version {}<br>""".format(PluginGlobals.instance().PLUGIN_VERSION)
         description2 = """Plus d'informations à l'adresse suivante :<br><a href='{0}'>{0}</a><br>""".format(PluginGlobals.instance().PLUGIN_SOURCE_REPOSITORY)
         description3 = """Merci aux créateurs des plugins <a href="https://github.com/geo2france/idg-qgis3-plugin">Géo2France </a>, <a href="contact@bchartier.net">Benjamin CHARTIER</a>, <a href="https://github.com/geobretagne/qgis-plugin">Géobretagne</a> et <a href="https://gitlab.in2p3.fr/letg/indigeo-for-qgis">Indigéo </a>sur lesquels ce plugin est basé !"""

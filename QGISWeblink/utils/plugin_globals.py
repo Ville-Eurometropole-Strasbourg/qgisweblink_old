@@ -14,9 +14,9 @@ class PluginGlobals:
     plugin_path = None
 
     # Plugin infos
-    PLUGIN_TAG = u"EMS_QGISweblink"
+    PLUGIN_TAG = u"QGISweblink"
     #PLUGIN_TAG = u"indigeo"
-    PLUGIN_VERSION = u"0.1"
+    PLUGIN_VERSION = u"0.2 build 1"
     PLUGIN_SOURCE_REPOSITORY = u"https://github.com/geograndest/qgis-plugin"
 
     # Tree nodes types
@@ -33,6 +33,7 @@ class PluginGlobals:
 
     # Node status values
     NODE_STATUS_WARN = 'warn'
+    NODE_STATUS_HIDDEN = 'hidden'
 
     # Images dir
     IMAGES_DIR_NAME = "images"
@@ -47,9 +48,11 @@ class PluginGlobals:
 
     # Config files dir
     CONFIG_FILES_DOWNLOAD_AT_STARTUP = True
+    USE_AUTH_CONFIG = False
+
     CONFIG_DIR_NAME = "config"
     CONFIG_FILE_NAMES = ["config.json"]
-    CONFIG_FILE_URLS = ["https://catalog.wpsiglw.cus.fr/donnees/qgis/plugin_ems/config.json"]
+    CONFIG_FILE_URLS = ["https://catalog.wpsiglw.cus.fr/donnees/qgis/plugin_ems/config_ems2.json"]
 
     # Hide resources with status = warn
     HIDE_RESOURCES_WITH_WARN_STATUS = True
@@ -66,7 +69,8 @@ class PluginGlobals:
             "CONFIG_FILE_NAMES": self.CONFIG_FILE_NAMES,
             "CONFIG_FILE_URLS": self.CONFIG_FILE_URLS,
             "HIDE_RESOURCES_WITH_WARN_STATUS": self.HIDE_RESOURCES_WITH_WARN_STATUS,
-            "HIDE_EMPTY_GROUPS": self.HIDE_EMPTY_GROUPS
+            "HIDE_EMPTY_GROUPS": self.HIDE_EMPTY_GROUPS,
+            "USE_AUTH_CONFIG": self.USE_AUTH_CONFIG
             }
 
         self.config_dir_path = None
@@ -108,6 +112,13 @@ class PluginGlobals:
 
         self.CONFIG_FILE_URLS = s.value(u"{0}/config_file_urls".format(self.PLUGIN_TAG), self.CONFIG_FILE_URLS)
         
+        self.USE_AUTH_CONFIG = \
+            False if s.value(
+                u"{0}/use_auth_config".format(self.PLUGIN_TAG),
+                self.USE_AUTH_CONFIG) == u"0" else True
+
+
+
         # False by default so that parameter is checked the 1st time user opens plugin, else invert
         self.HIDE_RESOURCES_WITH_WARN_STATUS = False if s.value(
             u"{0}/hide_resources_with_warn_status".format(self.PLUGIN_TAG),

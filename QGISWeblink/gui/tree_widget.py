@@ -65,7 +65,7 @@ class TreeWidget(QTreeWidget):
         if resources_tree is None:
             QgsMessageLog.logMessage(u"Faute de fichier de configuration valide, aucune ressource ne peut être chargée "
                                      u"dans le panneau de l'extension QGISWeblink.",
-                                     tag=u"QGISWeblink", level=Qgis.Warning)
+                                     tag=PluginGlobals.instance().PLUGIN_TAG, level=Qgis.Warning)
         elif resources_tree.children is not None and len(resources_tree.children) > 0:
             for child in resources_tree.children:
                 create_subitem(child, self)
@@ -104,17 +104,25 @@ class TreeWidget(QTreeWidget):
     # list_of_relations must contain children to show children, parent to show parents           
     def iterate_and_show(self, searchtext, item_type, list_of_relations):
         
-#        # hide all items an update tree state
-#        it = QTreeWidgetItemIterator(self)
-##        i = 0
-#        while it.value():
-#            item = it.value()
-##            item.setHidden(True)
-##            tree_state_text[i] = False
-#            tree_state_text[item.text(0)] = False
-#            it += 1
-##            i += 1
-        
+       # hide all items an update tree state
+        it = QTreeWidgetItemIterator(self)
+#        i = 0
+        while it.value():
+           item = it.value()
+           item.setHidden(True)
+        #    tree_state_text[i] = False
+           tree_state_text[item.item_data.ident] = False
+           it += 1
+#            i += 1
+        if not searchtext:
+            # no searchtext : show only folder
+            it = QTreeWidgetItemIterator(self)
+            while it.value():
+                item = it.value()
+                if item_type == 'folder':
+                    tree_state_text[item.item_data.ident] = True
+                it+=1
+            return
         # iterate through all items
         it = QTreeWidgetItemIterator(self)
         while it.value():
@@ -184,7 +192,11 @@ class TreeWidget(QTreeWidget):
             # folds all folders if no extent filter is set
             if False not in tree_state_extent.values():
                 self.collapseAll()
-            
+                QgsMessageLog.logMessage(u"collapse: "+repr(tree_state_extent)+repr(tree_state_text),
+                                     tag=PluginGlobals.instance().PLUGIN_TAG, level=Qgis.Info)
+            else:
+                QgsMessageLog.logMessage(u"state: "+repr(tree_state_extent),
+                                     tag=PluginGlobals.instance().PLUGIN_TAG, level=Qgis.Info)            
         # text filter
         else:
             # hide all items

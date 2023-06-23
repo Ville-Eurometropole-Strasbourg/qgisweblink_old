@@ -48,6 +48,11 @@ class ParamBox(QDialog):
         self.download_cb.stateChanged.connect(self.download_cb_changed)
         config_file_groupbox_layout.addRow(self.download_cb)
 
+        # Download use authconfig
+        self.use_auth_config = QCheckBox(u"acces wms authentifié", self)
+        self.use_auth_config.stateChanged.connect(self.use_auth_config_changed)
+        config_file_groupbox_layout.addRow(self.use_auth_config)
+
         params_layout.addWidget(self.config_files_groupbox)
 
         # Download the file now
@@ -113,6 +118,11 @@ class ParamBox(QDialog):
         self.download_cb.setChecked(PluginGlobals.instance().CONFIG_FILES_DOWNLOAD_AT_STARTUP)
         self.download_cb.blockSignals(True)
         
+         # use_auth_config
+        self.use_auth_config.blockSignals(True)
+        self.use_auth_config.setChecked(PluginGlobals.instance().USE_AUTH_CONFIG)
+        self.use_auth_config.blockSignals(True)
+
         # Hide resources with a warn flag
         self.hide_resources_with_warn_status_cb.blockSignals(True)
         self.hide_resources_with_warn_status_cb.setChecked(PluginGlobals.instance().HIDE_RESOURCES_WITH_WARN_STATUS)
@@ -155,6 +165,12 @@ class ParamBox(QDialog):
         """
         self.evaluate_flags()
 
+    def use_auth_config_changed(self, state):
+        """
+        Event sent when the state of the checkbox change
+        """
+        self.evaluate_flags()
+
     def config_file_url_changed(self):
         """
         Event sent when the text of the line edit has been edited
@@ -192,6 +208,11 @@ class ParamBox(QDialog):
         # Download the file at startup
         new_value = self.download_cb.isChecked()
         PluginGlobals.instance().set_qgis_settings_value("config_files_download_at_startup", new_value)
+
+        # use authconfig
+        new_value = self.use_auth_config.isChecked()
+        PluginGlobals.instance().set_qgis_settings_value("use_auth_config", new_value)
+
 
         # Hide resources with a warn flag
         new_value = self.hide_resources_with_warn_status_cb.isChecked()
@@ -237,6 +258,13 @@ class ParamBox(QDialog):
         self.download_cb.setChecked(PluginGlobals.instance().get_qgis_setting_default_value(
             "CONFIG_FILES_DOWNLOAD_AT_STARTUP"))
         self.download_cb.blockSignals(False)
+
+        # use auth config
+        self.use_auth_config.blockSignals(True)
+        self.use_auth_config.setChecked(PluginGlobals.instance().get_qgis_setting_default_value(
+            "USE_AUTH_CONFIG"))
+        self.use_auth_config.blockSignals(False)
+
 
         # Hide resources with a warn flag
         self.hide_resources_with_warn_status_cb.blockSignals(True)

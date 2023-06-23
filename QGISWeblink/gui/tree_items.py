@@ -65,8 +65,11 @@ class TreeWidgetItem(QTreeWidgetItem):
         # Item icon
         icon = self.item_data.icon
         if icon is not None:
-            self.setIcon(0, icon)
-        
+            if isinstance(icon,list):
+                for n,i in enumerate(icon):
+                    self.setIcon(n, i)
+            else:
+                self.setIcon(0, icon)
         # QT flags
         # Enable selection and drag of the item
         if self.item_data.can_be_added_to_map:

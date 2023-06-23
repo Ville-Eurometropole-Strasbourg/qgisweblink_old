@@ -8,7 +8,8 @@ from qgis.core import Qgis, QgsMessageLog
 
 from QGISWeblink.utils.plugin_globals import PluginGlobals
 from .nodes import WmsLayerTreeNode, WmsStyleLayerTreeNode, WmtsLayerTreeNode, WfsFeatureTypeTreeNode
-from .nodes import WfsFeatureTypeFilterTreeNode, GdalWmsConfigFileTreeNode, FolderTreeNode,QlrLayerTreeNode
+from .nodes import WfsFeatureTypeFilterTreeNode, GdalWmsConfigFileTreeNode, FolderTreeNode
+from .nodes import QlrLayerTreeNode, MultiFormLayerTreeNode
 
 
 def download_tree_config_file(file_url):
@@ -28,6 +29,15 @@ def download_tree_config_file(file_url):
 
         long_message = u"{0}\nUrl du fichier : {1}\n{2}\n{3}".format(short_message, file_url, e.__doc__, e)
         QgsMessageLog.logMessage(long_message, tag=PluginGlobals.instance().PLUGIN_TAG, level=Qgis.Critical)
+
+
+
+
+
+
+
+
+
 
 
 class TreeNodeFactory:
@@ -64,7 +74,7 @@ class TreeNodeFactory:
             long_message = u"{0}\n{1}\n{2}".format(short_message, e.__doc__, e)
             QgsMessageLog.logMessage(long_message, tag=PluginGlobals.instance().PLUGIN_TAG, level=Qgis.Critical)
 
-    def build_tree(self, tree_config, parent_node=None):
+    def build_tree(self, tree_config, parent_node=None, virtualnode=False):
         """
         Function that do the job
         """
@@ -109,7 +119,7 @@ class TreeNodeFactory:
                 node = GdalWmsConfigFileTreeNode(node_title, node_type, node_description,
                                                  node_status, node_metadata_url, node_ident, node_params, node_bounding_boxes, parent_node)
 
-            elif node_type == PluginGlobals.instance().NODE_TYPE_NODE_TYPE_MULTIFORM:
+            elif node_type == PluginGlobals.instance().NODE_TYPE_MULTIFORM:
                 node = MultiFormLayerTreeNode(node_title, node_type, node_description,
                                                  node_status, node_metadata_url, node_ident, node_params, node_bounding_boxes, parent_node)
             else:
