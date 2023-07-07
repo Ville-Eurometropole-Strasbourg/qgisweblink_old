@@ -9,7 +9,7 @@ from qgis.core import Qgis, QgsMessageLog
 from QGISWeblink.utils.plugin_globals import PluginGlobals
 from .nodes import WmsLayerTreeNode, WmsStyleLayerTreeNode, WmtsLayerTreeNode, WfsFeatureTypeTreeNode
 from .nodes import WfsFeatureTypeFilterTreeNode, GdalWmsConfigFileTreeNode, FolderTreeNode
-from .nodes import QlrLayerTreeNode, MultiFormLayerTreeNode
+from .nodes import QlrLayerTreeNode
 
 
 def download_tree_config_file(file_url):
@@ -117,10 +117,6 @@ class TreeNodeFactory:
 
             elif node_type == PluginGlobals.instance().NODE_TYPE_GDAL_WMS_CONFIG_FILE:
                 node = GdalWmsConfigFileTreeNode(node_title, node_type, node_description,
-                                                 node_status, node_metadata_url, node_ident, node_params, node_bounding_boxes, parent_node)
-
-            elif node_type == PluginGlobals.instance().NODE_TYPE_MULTIFORM:
-                node = MultiFormLayerTreeNode(node_title, node_type, node_description,
                                                  node_status, node_metadata_url, node_ident, node_params, node_bounding_boxes, parent_node)
             else:
                 node = FolderTreeNode(node_title, node_type, node_description,

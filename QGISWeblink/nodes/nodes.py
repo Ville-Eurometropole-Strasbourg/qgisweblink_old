@@ -142,10 +142,10 @@ class WmsLayerTreeNode(FavoritesTreeNode):
         """
         use_auth_config = PluginGlobals.instance().USE_AUTH_CONFIG
         if use_auth_config:
-            uri = u"contextualWMSLegend=0&crs={}&featureCount=10&format={}&layers={}&maxHeight=256&maxWidth=256&styles={}&url={}&authcfg={}".format(
+            uri = u"contextualWMSLegend=0&crs={}&featureCount=10&format={}&layers={}&styles={}&url={}&authcfg={}".format(
                 self.layer_srs, self.layer_format, self.layer_name, self.layer_style_name, self.service_url,self.authCfg)
         else:
-            uri = u"contextualWMSLegend=0&crs={}&featureCount=10&format={}&layers={}&maxHeight=256&maxWidth=256&styles={}&url={}".format(
+            uri = u"contextualWMSLegend=0&crs={}&featureCount=10&format={}&layers={}&styles={}&url={}".format(
                 self.layer_srs, self.layer_format, self.layer_name, self.layer_style_name, self.service_url)
         
         qgis_layer_uri_details = {
@@ -535,8 +535,8 @@ class QlrLayerTreeNode(FavoritesTreeNode):
 
 
         qgis_layer_uri_details = {
-            "type": "vector",
-            "provider": "XML",
+            "type": "custom",
+            "provider": "qlr",
             "title": self.title,
             "uri": layerfile
         }
@@ -568,27 +568,24 @@ class QlrLayerTreeNode(FavoritesTreeNode):
             QgsMessageLog.logMessage(message, tag=PluginGlobals.instance().PLUGIN_TAG, level=Qgis.Info)
 
 
-
-
-class MultiFormLayerTreeNode(FavoritesTreeNode):
+class QptLayerTreeNode(FavoritesTreeNode):
     """
-    Tree node for a multiform definition: allows multiple forms of the same data in one node
+    Tree node for a qpt definition
     """
 
-    def __init__(self, title, node_type=PluginGlobals.instance().NODE_TYPE_MULTIFORM,
+    def __init__(self, title, node_type=PluginGlobals.instance().NODE_TYPE_QGIS_QLR_FILE,
                  description=None, status=None, metadata_url=None, ident=None, params=None, bounding_boxes=None, parent_node=None):
         """
         """
         FavoritesTreeNode.__init__(self, title, node_type, description, status, metadata_url, ident, params, bounding_boxes, parent_node)
 
         self.service_url = params.get("url")
+        self.localfile = None
         self.layer_name = params.get("name")
         self.layer_format = params.get("format")
         self.layer_srs = params.get("srs")
         self.layer_style_name = params.get("style", "")
         self.can_be_added_to_map = True
-
-        self.subnodes=[]
 
         # Icon
         plugin_icons = PluginIcons.instance()
@@ -601,17 +598,19 @@ class MultiFormLayerTreeNode(FavoritesTreeNode):
         Return the details of the layer used by QGIS to add the layer to the map.
         This dictionary is used by the run_add_to_map_action and layerMimeData methods.
         """
-
         if self.localfile:
             layerfile = self.localfile
         else:
             layerfile = self.service_url
         if layerfile.startswith("http"):  # download first
-            layerfile = download_ressource_file(layerfile,self.layer_name+'.qlr')
+                layerfile = download_ressource_file(layerfile,self.layer_name+'.qpt')
+        
+
+
 
         qgis_layer_uri_details = {
-            "type": "vector",
-            "provider": "qlr",
+            "type": "custom",
+            "provider": "qpt",
             "title": self.title,
             "uri": layerfile
         }
@@ -637,6 +636,8 @@ class MultiFormLayerTreeNode(FavoritesTreeNode):
             current_node = iface.layerTreeView().currentNode()
             if not current_node or isinstance(current_node, QgsLayerTreeLayer):
                 current_node = project.layerTreeRoot()
-            message="fichier chargé" + qlrfile
+            # iface.messageBar().pushWarning(None, "Layers found:" + layerfile)
+            message="fichier chargé" + self.service_url
             QgsLayerDefinition().loadLayerDefinition(layerfile, project, current_node)
             QgsMessageLog.logMessage(message, tag=PluginGlobals.instance().PLUGIN_TAG, level=Qgis.Info)
+
